@@ -7,6 +7,11 @@ import { Entry } from './entry';
 
 @Injectable()
 export class MemoryConnectorService implements Connector {
+  
+  inputTypesByIdx: any = {
+    0: 'number',
+    1: 'text'
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -22,7 +27,8 @@ export class MemoryConnectorService implements Connector {
         const q = arr[r];
         arr.splice(r, 1);
         const a = arr[0];
-        return new Entry(String(q), a, 'text');
+        const type = this.inputTypesByIdx[r];
+        return new Entry(String(q), a, type);
       }));
     }))
   }
