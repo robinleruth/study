@@ -1,0 +1,24 @@
+<table>
+    <div *ngIf="typeUsed === typesByName['chinese'];else memoryTemplate">
+        <tr>
+            <th>Chinese</th>
+            <th>English</th>
+        </tr>
+
+        <tr *ngFor="let inst of chineseInstances">
+            <td>{{ inst.chinese }}</td>
+            <td>{{ inst.french }}</td>
+        </tr>
+    </div>
+    <ng-template #memoryTemplate>
+        <tr>
+            <th>Number</th>
+            <th>Image</th>
+        </tr>
+
+        <tr *ngFor="let inst of memoryInstances">
+            <td>{{ inst.number }}</td>
+            <td>{{ inst.image }}</td>
+        </tr>
+    </ng-template>
+</table>

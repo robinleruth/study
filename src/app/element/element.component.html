@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-around" style="min-width: 50vw;">
+    <div>{{ entry.question }}</div>
+    <input #theInput *ngIf="!isAnswered;else elseTemplate" [(ngModel)]="answerGiven" type="{{ entry.type }}">
+    <ng-template #elseTemplate>
+        <div>{{answerGiven}}</div>
+    </ng-template>
+</div>
+<button *ngIf="!isAnswered" (click)="giveAnswer()">Ok</button>
+<div *ngIf="isAnswered">
+    <div *ngIf="entry.answer == answerGiven;else noTemplate">Yes, it was : {{entry.answer}}</div>
+    <ng-template #noTemplate>No ! It was {{ entry.answer }}</ng-template>
+</div>
